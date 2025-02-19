@@ -10,6 +10,6 @@ public class HomeController {
 
     @GetMapping()
     public String homePage() {
-        return "<h1Приветствуем вас в приложении Котограм<h1>";
+        return "Приветствуем вас в приложении Котограм";
     }
 }

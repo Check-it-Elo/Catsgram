@@ -35,16 +35,6 @@ public class PostController {
         return post;
     }
 
-    // вспомогательный метод для генерации идентификатора нового поста
-    private long getNextId() {
-        long currentMaxId = posts.keySet()
-                .stream()
-                .mapToLong(id -> id)
-                .max()
-                .orElse(0);
-        return ++currentMaxId;
-    }
-
     @PutMapping
     public Post update(@RequestBody Post newPost) {
         // проверяем необходимые условия
@@ -61,5 +51,15 @@ public class PostController {
             return oldPost;
         }
         throw new NotFoundException("Пост с id = " + newPost.getId() + " не найден");
+    }
+
+    // вспомогательный метод для генерации идентификатора нового поста
+    private long getNextId() {
+        long currentMaxId = posts.keySet()
+                .stream()
+                .mapToLong(id -> id)
+                .max()
+                .orElse(0);
+        return ++currentMaxId;
     }
 }
