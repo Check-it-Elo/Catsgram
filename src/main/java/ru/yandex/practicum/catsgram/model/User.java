@@ -2,7 +2,7 @@ package ru.yandex.practicum.catsgram.model;
 
 import lombok.Data;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Data
 public class User {
@@ -10,5 +10,5 @@ public class User {
     String username;
     String email;
     String password;
-    Instant registrationDate;
+    LocalDateTime registrationDate;
 }
