@@ -1,6 +1,7 @@
 package ru.yandex.practicum.catsgram.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ru.yandex.practicum.catsgram.exception.NotFoundException;
 import ru.yandex.practicum.catsgram.model.User;
 import ru.yandex.practicum.catsgram.service.UserService;
 
@@ -29,6 +30,13 @@ public class UserController {
     @PutMapping
     public User updateUser(@RequestBody User newUser) {
         return userService.updateUser(newUser);
+    }
+
+
+    @GetMapping("/{userId}")
+    public User getUser(@PathVariable("userId") long userId) {
+        return userService.findUserById(userId)
+                .orElseThrow(() -> new NotFoundException("Пользователь с таким id не найден: " + userId));
     }
 
 }
